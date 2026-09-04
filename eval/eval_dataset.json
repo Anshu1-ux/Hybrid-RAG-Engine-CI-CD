@@ -1,0 +1,26 @@
+[
+  {
+    "question": "What is the difference between dense and sparse retrieval?",
+    "ground_truth": "Dense retrieval uses embedding models to capture semantic similarity between queries and documents, while sparse retrieval (like BM25) uses term-frequency statistics and excels at exact keyword matching but does not understand meaning."
+  },
+  {
+    "question": "Why is Reciprocal Rank Fusion used to combine dense and sparse results?",
+    "ground_truth": "Reciprocal Rank Fusion combines ranked lists using only rank position rather than raw scores, which avoids the problem of dense and sparse retrieval producing scores on incomparable scales."
+  },
+  {
+    "question": "What does a cross-encoder reranker do and why is it only applied to a small candidate set?",
+    "ground_truth": "A cross-encoder scores a query and document jointly for more accurate relevance ranking, but it is computationally expensive, so it is only applied to a small candidate set from the first-stage retrieval rather than the whole corpus."
+  },
+  {
+    "question": "What are the four dimensions typically used to evaluate RAG systems?",
+    "ground_truth": "The four dimensions are faithfulness, answer relevancy, context precision, and context recall."
+  },
+  {
+    "question": "What is a reasonable starting chunk size and overlap for document chunking?",
+    "ground_truth": "A common starting point is 500 to 1000 characters per chunk with 10 to 20 percent overlap between consecutive chunks to preserve context across boundaries."
+  },
+  {
+    "question": "What is HNSW and what tradeoff does it make?",
+    "ground_truth": "HNSW (Hierarchical Navigable Small World graphs) is an approximate nearest neighbor algorithm that builds a multi-layer graph for logarithmic-time search, trading a small amount of recall for a large improvement in query latency at scale."
+  }
+]

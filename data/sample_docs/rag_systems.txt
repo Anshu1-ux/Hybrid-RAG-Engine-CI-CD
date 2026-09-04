@@ -1,0 +1,34 @@
+Retrieval-Augmented Generation (RAG) Systems
+
+Retrieval-Augmented Generation combines a retriever and a generator to produce
+answers grounded in an external knowledge base rather than relying solely on
+a language model's parametric memory.
+
+Dense retrieval uses embedding models to map queries and documents into a
+shared vector space, then finds nearest neighbors using cosine similarity or
+dot product. Dense retrieval is strong at capturing semantic similarity, for
+example matching "car" with "automobile", but can miss exact keyword matches
+such as product codes, error messages, or rare proper nouns.
+
+Sparse retrieval, such as BM25, ranks documents using term frequency and
+inverse document frequency statistics. BM25 is excellent at exact keyword
+matching and rare-term retrieval but does not understand semantic meaning.
+
+Hybrid retrieval combines dense and sparse retrieval, typically using
+Reciprocal Rank Fusion (RRF) to merge the two ranked lists into a single
+ranking. Hybrid retrieval generally outperforms either method alone because
+it captures both semantic similarity and exact keyword precision.
+
+Reranking is a second-stage refinement step. After an initial retrieval pass
+returns a candidate set (for example the top 20 documents), a cross-encoder
+model scores each query-document pair jointly, producing a more accurate
+relevance ranking than the initial retrieval stage alone. Cross-encoders are
+more computationally expensive than bi-encoders, so they are only applied to
+a small candidate set rather than the entire corpus.
+
+Evaluation of RAG systems typically measures four dimensions: faithfulness
+(whether the generated answer is supported by the retrieved context),
+answer relevancy (whether the answer addresses the question), context
+precision (whether the retrieved context is relevant to the question), and
+context recall (whether the retrieved context contains the information
+needed to answer the question).

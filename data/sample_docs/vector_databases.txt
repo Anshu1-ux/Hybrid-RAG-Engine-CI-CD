@@ -1,0 +1,29 @@
+Vector Databases and Similarity Search
+
+A vector database stores high-dimensional embeddings and provides efficient
+approximate nearest neighbor (ANN) search over them. Popular vector database
+options include ChromaDB, Milvus, Pinecone, Weaviate, and FAISS.
+
+ChromaDB is a lightweight, open-source vector database that is easy to run
+locally or embed directly inside an application. It supports metadata
+filtering alongside vector search, which is useful for multi-tenant
+applications where documents need to be scoped by user or namespace.
+
+Milvus is a distributed vector database designed for large-scale production
+workloads, supporting billions of vectors with horizontal scaling. It
+supports multiple ANN index types including HNSW, IVF, and DiskANN, each
+trading off between search speed, memory usage, and recall.
+
+Approximate Nearest Neighbor search algorithms such as HNSW (Hierarchical
+Navigable Small World graphs) build a multi-layer graph structure that
+allows logarithmic-time search instead of the linear-time scan required by
+exact nearest neighbor search. This tradeoff sacrifices a small amount of
+recall for a large improvement in query latency at scale.
+
+Document chunking strategy has a direct impact on retrieval quality.
+Chunks that are too large dilute the embedding with irrelevant content,
+reducing retrieval precision. Chunks that are too small lose surrounding
+context, which can hurt both retrieval and the quality of the generated
+answer. A common starting point is 500 to 1000 characters per chunk with a
+10 to 20 percent overlap between consecutive chunks to preserve context
+across chunk boundaries.
